@@ -1,8 +1,9 @@
 ---
 - hosts: localhost
+  connection: local
   become: no
   gather_facts: false
   vars:
     msg_function_alert: false
   roles:
-    - { role: alerts, dir: ../ }
+    - { role: ../ }
