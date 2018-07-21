@@ -5,4 +5,4 @@
   vars:
     msg_function_alert: false
   roles:
-    - lc.alerts
+    - { role: alerts, dir: ../ }
