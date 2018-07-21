@@ -40,12 +40,6 @@ galaxy_info:
     - slack
     - email
     - ci
-    - centos
-    - debian
-    - el
-    - fedora
-    - opensuse
-    - rhel
-    - ubuntu
+    - cd
 
 dependencies: []
