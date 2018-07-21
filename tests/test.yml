@@ -5,5 +5,5 @@
   gather_facts: false
   vars:
     msg_function_alert: false
-  roles:
-    - { role: ../ }
+  tasks:
+    - include_tasks: "../tasks/main.yml"
