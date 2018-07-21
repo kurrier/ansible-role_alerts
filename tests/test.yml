@@ -4,6 +4,6 @@
   become: no
   gather_facts: false
   vars:
-    msg_function_alert: false
+    msg_function_alert: true
   tasks:
     - include_tasks: "../tasks/main.yml"
