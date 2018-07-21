@@ -1,0 +1,7 @@
+---
+# tasks file for alerts
+
+- name: Sending Alerts
+  include_tasks: message.yml
+  when: msg_function_alert is defined and msg_function_alert|bool == true
+

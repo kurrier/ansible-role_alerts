@@ -1,0 +1,8 @@
+---
+- hosts: localhost
+  become: no
+  gather_facts: false
+  vars:
+    msg_function_alert: false
+  roles:
+    - lc.alerts

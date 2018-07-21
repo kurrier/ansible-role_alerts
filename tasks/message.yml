@@ -1,0 +1,153 @@
+---
+# Message Levels
+# 1 - Critical
+# 2 - Warning
+# 3 - Notice
+# 4 - Info
+
+- name: Level 1 Alerting
+  block:
+
+    - name: slack message [crtical]
+      slack:
+        token: "{{ ansible_slack_token }}"
+        channel: "{{ ansible_slack_channel }}"
+        attachments:
+          - fallback: "{{ msg_subject }} - Job #{{ msg_job_uuid }}: {{ msg_alert_title }} - {{ msg_alert_url }}"
+            pretext: "{{ msg_subject }}"
+            title: "Job #{{ msg_job_uuid }}: {{ msg_alert_title }}"
+            title_link: "{{ msg_alert_url }}"
+            text: "{{ msg_alert_txt }}"
+            color: "danger"
+            ts: "{{ msg_job_time }}"
+            footer: "{{ msg_footer }}"
+            footer_icon: "{{ msg_footer_icon }}"
+      delegate_to: localhost
+      run_once: true
+      when: msg_slack_crit is defined and msg_slack_crit|bool == true
+
+    - name: mail message [crtical]
+      mail:
+        host: "{{ ansible_mail_host }}"
+        subject: "{{ msg_subject }} - {{ msg_alert_title }} - {{ msg_job_uuid }}"
+        body: "{{ msg_alert_body }}"
+        from: "{{ ansible_mail_from }}"
+        to: "{{ ansible_mail_to }}"
+      delegate_to: localhost
+      run_once: true
+      when: msg_mail_crit is defined and msg_mail_crit|bool == true
+
+  when: 
+    - msg_alert_txt is defined
+    - msg_alert_lvl is defined and msg_alert_lvl == 1
+
+- name: Level 2 Alerting
+  block:
+
+    - name: slack message [warning]
+      slack:
+        token: "{{ ansible_slack_token }}"
+        channel: "{{ ansible_slack_channel }}"
+        attachments:
+          - fallback: "{{ msg_subject }} - Job #{{ msg_job_uuid }}: {{ msg_alert_title }} - {{ msg_alert_url }}"
+            pretext: "{{ msg_subject }}"
+            title: "Job #{{ msg_job_uuid }}: {{ msg_alert_title }}"
+            title_link: "{{ msg_alert_url }}"
+            text: "{{ msg_alert_txt }}"
+            color: "warning"
+            ts: "{{ msg_job_time }}"
+            footer: "{{ msg_footer }}"
+            footer_icon: "{{ msg_footer_icon }}"
+      delegate_to: localhost
+      run_once: true
+      when: msg_slack_warn is defined and msg_slack_warn|bool == true
+
+    - name: mail message [warning]
+      mail:
+        host: "{{ ansible_mail_host }}"
+        subject: "{{ msg_subject }} - {{ msg_alert_title }} - {{ msg_job_uuid }}"
+        body: "{{ msg_alert_body }}"
+        from: "{{ ansible_mail_from }}"
+        to: "{{ ansible_mail_to }}"
+      delegate_to: localhost
+      run_once: true
+      when: msg_mail_warn is defined and msg_mail_warn|bool == true
+
+  when:
+    - msg_alert_txt is defined
+    - msg_alert_lvl is defined and msg_alert_lvl == 2
+
+- name: Level 3 Alerting
+  block:
+
+    - name: slack message [notice]
+      slack:
+        token: "{{ ansible_slack_token }}"
+        channel: "{{ ansible_slack_channel }}"
+        attachments:
+          - fallback: "{{ msg_subject }} - Job #{{ msg_job_uuid }}: {{ msg_alert_title }} - {{ msg_alert_url }}"
+            pretext: "{{ msg_subject }}"
+            title: "Job #{{ msg_job_uuid }}: {{ msg_alert_title }}"
+            title_link: "{{ msg_alert_url }}"
+            text: "{{ msg_alert_txt }}"
+            color: "good"
+            ts: "{{ msg_job_time }}"
+            footer: "{{ msg_footer }}"
+            footer_icon: "{{ msg_footer_icon }}"
+      delegate_to: localhost
+      run_once: true
+      when: msg_slack_notice is defined and msg_slack_notice|bool == true
+
+    - name: mail message [notice]
+      mail:
+        host: "{{ ansible_mail_host }}"
+        subject: "{{ msg_subject }} - {{ msg_alert_title }} - {{ msg_job_uuid }}"
+        body: "{{ msg_alert_body }}"
+        from: "{{ ansible_mail_from }}"
+        to: "{{ ansible_mail_to }}"
+      delegate_to: localhost
+      run_once: true
+      when: msg_mail_notice is defined and msg_mail_notice|bool == true
+
+  when:
+    - msg_alert_txt is defined
+    - msg_alert_lvl is defined and msg_alert_lvl == 3
+
+- name: Level 3 Alerting
+  block:
+
+    - name: slack message [info]
+      slack:
+        token: "{{ ansible_slack_token }}"
+        channel: "{{ ansible_slack_channel }}"
+        attachments:
+          - fallback: "{{ msg_subject }} - Job #{{ msg_job_uuid }}: {{ msg_alert_title }} - {{ msg_alert_url }}"
+            pretext: "{{ msg_subject }}"
+            title: "Job #{{ msg_job_uuid }}: {{ msg_alert_title }}"
+            title_link: "{{ msg_alert_url }}"
+            text: "{{ msg_alert_txt }}"
+            color: "normal"
+            ts: "{{ msg_job_time }}"
+            footer: "{{ msg_footer }}"
+            footer_icon: "{{ msg_footer_icon }}"
+      delegate_to: localhost
+      run_once: true
+      when: msg_slack_info is defined and msg_slack_info|bool == true
+
+    - name: mail message [info]
+      mail:
+        host: "{{ ansible_mail_host }}"
+        subject: "{{ msg_subject }} - {{ msg_alert_title }} - {{ msg_job_uuid }}"
+        body: "{{ msg_alert_body }}"
+        from: "{{ ansible_mail_from }}"
+        to: "{{ ansible_mail_to }}"
+      delegate_to: localhost
+      run_once: true
+      when: msg_mail_info is defined and msg_mail_info|bool == true
+
+  when:
+    - msg_alert_txt is defined
+    - msg_alert_lvl is defined and msg_alert_lvl == 4
+
+
+
