@@ -92,6 +92,11 @@ Test
 ansible-playbook tests/test.yml -i tests/inventory
 
 
+Plans
+----------------
+- Full Headless supoprt through Docker, then can be called through cron/bash jobs
+- Add plans for API notification support
+
 License
 -------
 
