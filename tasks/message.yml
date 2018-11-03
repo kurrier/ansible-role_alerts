@@ -33,6 +33,7 @@
         body: "{{ msg_alert_body }}"
         from: "{{ ansible_mail_from }}"
         to: "{{ ansible_mail_to }}"
+        secure: never
       delegate_to: localhost
       run_once: true
       when: msg_mail_crit is defined and msg_mail_crit|bool == true
@@ -69,6 +70,7 @@
         body: "{{ msg_alert_body }}"
         from: "{{ ansible_mail_from }}"
         to: "{{ ansible_mail_to }}"
+        secure: never
       delegate_to: localhost
       run_once: true
       when: msg_mail_warn is defined and msg_mail_warn|bool == true
@@ -105,6 +107,7 @@
         body: "{{ msg_alert_body }}"
         from: "{{ ansible_mail_from }}"
         to: "{{ ansible_mail_to }}"
+        secure: never
       delegate_to: localhost
       run_once: true
       when: msg_mail_notice is defined and msg_mail_notice|bool == true
@@ -141,6 +144,7 @@
         body: "{{ msg_alert_body }}"
         from: "{{ ansible_mail_from }}"
         to: "{{ ansible_mail_to }}"
+        secure: never
       delegate_to: localhost
       run_once: true
       when: msg_mail_info is defined and msg_mail_info|bool == true
