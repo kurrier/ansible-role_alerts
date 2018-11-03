@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/kurrier/ansible-role_alerts.svg?branch=master)](https://travis-ci.org/kurrier/ansible-role_alerts)
+
 Ansible Role: alerts
 =========
 
