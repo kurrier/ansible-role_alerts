@@ -1,3 +1,5 @@
+https://travis-ci.org/kurrier/ansible-role_alerts.svg?branch=master
+
 Ansible Role: alerts
 =========
 
